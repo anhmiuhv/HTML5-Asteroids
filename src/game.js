@@ -718,6 +718,14 @@ Explosion = function () {
 };
 Explosion.prototype = new Sprite();
 
+function sendNotification() {
+  // This function display the 'game is offline' message
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", " https://us-central1-spidercloud-db41a.cloudfunctions.net/sendNotification?text=nudge", true)
+  xhttp.send()
+
+}
+
 GridNode = function () {
   this.north = null;
   this.south = null;
@@ -919,6 +927,7 @@ Game = {
     waiting: function () {
       Text.renderText(window.ipad ? 'Touch Screen to Start' : 'Press Space to Start', 36, Game.canvasWidth/2 - 270, Game.canvasHeight/2);
       if (KEY_STATUS.space || window.gameStart) {
+        sendNotification()
         KEY_STATUS.space = false; // hack so we don't shoot right away
         window.gameStart = false;
         this.state = 'start';
