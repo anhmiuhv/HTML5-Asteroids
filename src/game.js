@@ -436,6 +436,8 @@ Ship = function () {
   };
 
   this.collision = function (other) {
+    sendNotification()
+
     SFX.explosion();
     Game.explosionAt(other.x, other.y);
     Game.FSM.state = 'player_died';
@@ -723,7 +725,6 @@ function sendNotification() {
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", " https://us-central1-spidercloud-db41a.cloudfunctions.net/sendNotification?text=nudge", true)
   xhttp.send()
-
 }
 
 GridNode = function () {
