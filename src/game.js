@@ -723,7 +723,7 @@ Explosion.prototype = new Sprite();
 function sendNotification() {
   // This function display the 'game is offline' message
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", " https://us-central1-spidercloud-db41a.cloudfunctions.net/sendNotification?text=nudge", true)
+  xhttp.open("GET", " https://us-central1-spidercloud-db41a.cloudfunctions.net/sendNotification?text=longnudge", true)
   xhttp.send()
 }
 
